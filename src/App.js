@@ -1,5 +1,6 @@
-import {Routes, Route} from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import {Routes, Route} from 'react-router-dom';
+import * as authService from './services/authService';
 import Header from "./components/Header";
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
@@ -7,10 +8,9 @@ import Register from './components/Register';
 import Create from './components/Create';
 import MyPets from './components/MyPets';
 import Edit from './components/Edit';
-import * as authService from './services/authService';
 
 function App() {
-  const [iserInfo, setUserInfo] = useState({isAuthenticated: false, username: ""})
+  const [userInfo, setUserInfo] = useState({isAuthenticated: false, username: ""})
 
   useEffect(() => {
     let user = authService.getUser();
@@ -32,7 +32,7 @@ function App() {
   return (
     <div id="container">
     
-    <Header />
+    <Header {...userInfo}/>
     
         <main id="site-content">
 <Routes>

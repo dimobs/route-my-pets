@@ -30,6 +30,13 @@ const Dashboard = () => {
                     <p className="img"><img src="/images/cat1.png" /></p>
                     <a className="button" href="#">Details</a>
                 </li>
+
+                <li className="otherPet">
+                    <h3>Name: Коньо</h3>
+                    <p>Type: horse</p>
+                    <p className="img"><img src="/images/horse.png" /></p>
+                    <a className="button" href="#">Details</a>
+                </li>
             </ul>
             <p className="no-pets">No pets in database!</p>
         </section>
