@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Create from './components/Create';
 import MyPets from './components/MyPets';
 import Edit from './components/Edit';
+import Details from './components/Details';
 
 function App() {
   const [userInfo, setUserInfo] = useState({isAuthenticated: false, username: ""})
@@ -42,6 +43,7 @@ function App() {
 <Route path='/My-Pets' element={<MyPets />} />
 <Route path='/Create' element={<Create />} />
 <Route path='/Edit' element={<Edit />} />
+<Route path='/details/:petId' element={<Details />} />
 </Routes>
         </main>
 
