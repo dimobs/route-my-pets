@@ -10,6 +10,9 @@ const Header = ({
                 <section className="navbar-dashboard">
                     <Link to="/">Dashboard</Link>
                     <div id="guest">
+      <button type="submit">Login</button>
+      <imput type="submit" value="Login">Login</imput>
+
                         <a className="button" href="/login">Login</a>
                         <Link to='/register' className="button">Register</Link>
                     </div>
