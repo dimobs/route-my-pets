@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({
+        email,
+   }) => {
 
     let guestNavigation = (
         <div id="guest">
@@ -11,7 +13,7 @@ const Header = () => {
 
     let userNavigation = (
         <div id="user">
-            <span>Welcome, {"Anonimus"}</span>
+            <span>Welcome, {email}</span>
             <Link className="button" to="my-pets">My Pets</Link>
             <Link className="button" to="/create">Add Pet</Link>
             <Link className="button" to="/logout">Logout</Link>
@@ -23,9 +25,12 @@ const Header = () => {
             <nav className="navbar">
                 <section className="navbar-dashboard">
                     <Link to="/">Dashboard</Link>
-                  {guestNavigation}
-                  {userNavigation}
 
+                    {email
+                  ? userNavigation
+                  : guestNavigation
+                    }
+              
                 </section>
             </nav>
         </header>

@@ -19,6 +19,7 @@ function App() {
   });
 
   const onLogin = (authData) => {
+    console.log(authData);
    setUser(authData);
   };
 
@@ -28,7 +29,7 @@ function App() {
   return (
     <AuthContext.Provider value={true}>
       <div id="container">
-        <Header log />
+        <Header email={user.email} />
 
         <main id="site-content">
           <Routes>

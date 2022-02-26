@@ -18,7 +18,7 @@ const Login = ({
             .then((authData) => {
                 onLogin(authData);
                 
-                navigate('/my-pets')
+                navigate('/')
             })
             .catch(err => {
                 //TODO: show notification
