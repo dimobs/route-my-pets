@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import uselocalStorageHook from './hooks/uselocalStorageHook';
 import { Routes, Route } from 'react-router-dom';
-import { AuthContext } from './contexts/authContext';
+import { AuthContext } from './contexts/AuthContext';
 import Header from "./components/Header";
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
@@ -12,30 +13,29 @@ import Details from './components/Details';
 import Logout from './components/Logout/Logout';
 
 function App() {
-  const [user, setUser] = useState({
+  const [user, setUser] = uselocalStorageHook('user', {
     _id: '',
     email: '',
     accessToken: '',
   });
 
-  const onLogin = (authData) => {
-    console.log(authData);
-   setUser(authData);
+  const login = (authData) => {
+       setUser(authData);
   };
 
-  const onLogout = () => {
+  const logout = () => {
   };
 
   return (
-    <AuthContext.Provider value={true}>
+    <AuthContext.Provider value={{user, login, logout}}>
       <div id="container">
-        <Header email={user.email} />
+        <Header />
 
         <main id="site-content">
           <Routes>
             <Route path='/' element={<Dashboard />} />
-            <Route path='/login' element={<Login onLogin={onLogin} />} />
-            <Route path='/logout' element={<Logout onLogout={onLogout} />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/logout' element={<Logout />} />
             <Route path='/register' element={<Register />} />
             <Route path='/my-pets' element={<MyPets />} />
             <Route path='/create' element={<Create />} />

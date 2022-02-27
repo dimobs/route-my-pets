@@ -1,5 +1,17 @@
+const baseUrl = 'http://localhost:3030';
+
+
+export const logout = async (token) => {
+    await fetch(`${baseUrl}/users/logout`, {
+        method: 'GET',
+        headers: {
+            'X-Authorization': token,
+        }
+    });
+}
+
 export const login = async (email, password) => {
-   let res = await fetch('http://localhost:3030/users/login', {
+    let res = await fetch(`${baseUrl}/users/login`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -8,11 +20,12 @@ export const login = async (email, password) => {
     })
 
     let jsonResult = await res.json();
-      if (res.ok) {
-          return jsonResult;
-      }else {
-         throw jsonResult.message;
-      }
+    console.log('dadsasda');
+    if (res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult.message;
+    }
 }
 
 export const getUser = () => {
@@ -24,6 +37,14 @@ export const isAuthenticated = () => {
     return Boolean(getUser());
 }
 
-export const logout = () => {
-    localStorage.removeItem('username')
+export const register = (email, password) => {
+    return fetch(`${baseUrl}/users/register`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+    })
+        .then(res => res.json());
 }
+
