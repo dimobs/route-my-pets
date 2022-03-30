@@ -23,12 +23,13 @@ const uselocalStorageHook = (key, initialValue) => {
         } catch (err) {
             console.log(err);
         }
-    }
 
-    return [
-        state,
-        setItem
-    ];
+
+        return [
+            state,
+            setItem
+        ];
+    }
 }
 
 export default uselocalStorageHook;

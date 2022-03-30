@@ -12,18 +12,21 @@ import Edit from './components/Edit';
 import Details from './components/Details';
 import Logout from './components/Logout/Logout';
 
+const initialAuthState = {
+_id: '',
+email: '',
+accessToken: '',
+};
+
 function App() {
-  const [user, setUser] = uselocalStorageHook('user', {
-    _id: '',
-    email: '',
-    accessToken: '',
-  });
+  const [user, setUser] = uselocalStorageHook('user', initialAuthState);
 
   const login = (authData) => {
        setUser(authData);
   };
 
   const logout = () => {
+    setUser(initialAuthState)
   };
 
   return (
